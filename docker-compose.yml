@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    php:
+        image: php:7.4-apache
+        volumes:
+            - ./html:/var/www/html
+        ports:
+            - 80:80
+        container_name: php-app
+    mysql:
+        platform: linux/x86_64 #Mac M1
+        image: mysql:5.7
+        volumes:
+            - /var/lib/mysql
+        ports:
+            - 3306:3306
+        container_name: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=test
+            - MYSQL_USER=test
+            - MYSQL_PASSWORD=test
